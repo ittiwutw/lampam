@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img
+        src="/assets/icon/logo_3.png"
+        style="height: 40px; width : 40px;   "
+      />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="/assets/pays/step-pay3.png" width="100%" alt="" />
+
+  <ion-list>
+    <ion-item no-lines style="background-color: #e7e7e7 ;">
+      <strong>ตรวจสอบความถูกต้องการสั่งซื้อ</strong>
+    </ion-item>
+
+    <ion-item no-padding>
+      <ion-grid style="background-color: #ffffff ;">
+        <ion-row>
+          <ion-col size="12" *ngFor="let item of cart">
+            <ion-row>
+              <ion-col size="4" style="max-height: 100px ; max-width: 100px;"
+                ><img [src]="item.imgUrl"
+              /></ion-col>
+              <ion-col size="8">
+                <div>
+                  <div style="text-align: left ;">
+                    <h3><b>{{item.product_name_th}}</b></h3>
+                  </div>
+                  <div style="text-align: left ;">
+                    <strong>{{item.title}}</strong>
+                  </div>
+                  <div style=" margin-top:0px">
+                    <h2 style="color: red">
+                      <strong> {{item.price}} บาท</strong>
+                    </h2>
+                  </div>
+                  <div style=" margin-top: 0px">
+                    <p style="color: rgba(136, 132, 128, 0.897)">
+                      จำนวน {{item.amt}} ชิ้น
+                    </p>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item no-lines *ngIf="paymentSummary">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="7" style="text-align: left;">
+            <div>
+              <div>
+                <strong>รวมทั้งหมด</strong>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col size="5" style="text-align: right; color: red">
+            <div>
+              <div>
+                <b>{{paymentSummary.total}} บาท</b>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item no-lines style="background-color: #e7e7e7 ;">
+      <strong>การชำระเงิน</strong>
+    </ion-item>
+    <ion-item no-lines style="background-color: #ffffff ;" *ngIf="paymentSummary">
+      <!-- <h3> -->
+      <strong
+        style="color: rgba(136, 132, 128, 0.897)"
+        *ngIf="paymentSummary.method == 'bank' "
+        >ชำระเงินผ่านธนาคาร</strong
+      >
+      <strong
+        style="color: rgba(136, 132, 128, 0.897)"
+        *ngIf="paymentSummary.method == 'visa' "
+        >ชำระเงินผ่านบัตรเครดิต/เดบิต</strong
+      >
+      <strong
+        style="color: rgba(136, 132, 128, 0.897)"
+        *ngIf="paymentSummary.method == 'self' "
+        >พนักงานติดต่อกลับ</strong
+      >
+      <!-- </h3> -->
+    </ion-item>
+
+    <ion-item no-lines style="background-color: #e7e7e7 ;">
+      <strong>ที่อยู่การจัดส่ง</strong>
+    </ion-item>
+    <ion-item text-wrap no-lines style="background-color: #ffffff;" *ngIf="address">
+      <div>
+        <strong style="color: rgba(136, 132, 128, 0.897)"
+          >{{address.name}} {{address.address}} {{address.subdistrict}}
+          {{address.district}} {{address.province}} {{address.postal}}</strong
+        >
+      </div>
+    </ion-item>
+
+    <br />
+    <!-- ปุ๋ม ตรวจสอบการสั่งซื้อ -->
+    <ion-button
+      size="large"
+      type="submit"
+      expand="block"
+      color="danger"
+      (click)="onClickPay()"
+      >ยืนยันการสั่งซื้อ</ion-button
+    >
+    <!-- ปุ๋ม ตรวจสอบการสั่งซื้อ -->
+  </ion-list>
+</ion-content>

@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light" ></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img src="/assets/icon/logo_3.png" style="height: 40px; width : 40px;   "/>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="/assets/pays/step-pay.png" width="100%" alt="">
+
+  <br>
+  <!-- <ion-item no-lines> -->
+    <ion-label padding><strong style="color:royalblue">กรอกที่อยู่จัดส่งสินค้า</strong></ion-label>
+  <!-- </ion-item> -->
+  <ion-list>
+
+    <div>
+      <ion-item>
+        <ion-label color="gray" position="floating">ชื่อ - นามสกุล</ion-label>
+        <ion-input type="text" [(ngModel)]="address.name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="gray" position="floating">อีเมล์</ion-label>
+        <ion-input type="text" [(ngModel)]="address.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="gray" position="floating">เบอร์โทรศัพท์</ion-label>
+        <ion-input type="text" [(ngModel)]="address.phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="gray" position="floating">ที่อยู่</ion-label>
+        <ion-input type="text" [(ngModel)]="address.address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="gray" position="floating">จังหวัด</ion-label>
+        <ion-input type="text" [(ngModel)]="address.province"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="gray" position="floating">เขต/อำเภอ</ion-label>
+        <ion-input type="text" [(ngModel)]="address.subdistrict"></ion-input>
+      </ion-item>
+
+      <ion-item style="padding-bottom: 20px;">
+        <ion-label color="gray" position="floating">แขวง/ตำบล</ion-label>
+        <ion-input type="text" [(ngModel)]="address.district"></ion-input>
+      </ion-item>
+
+      <ion-item style="padding-bottom: 20px;">
+        <ion-label color="gray" position="floating">รหัสไปรษณีย์</ion-label>
+        <ion-input type="text" [(ngModel)]="address.postal"></ion-input>
+      </ion-item>
+
+      <!-- ปุ๋ม ชำระเงิน -->
+      <div style="margin-top: 15px;margin-left: 15px;margin-right: 15px;">
+        <ion-button size="large" type="submit" expand="block" color="danger" (click)="onPageStepPay()"
+        >ชำระเงิน</ion-button
+      >
+      </div>
+      <!-- ปุ๋ม ชำระเงิน -->
+
+    </div>
+
+
+    <!-- ข้อมูลใบกำกับภาษี -->
+  </ion-list>
+</ion-content>

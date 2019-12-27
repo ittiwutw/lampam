@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img
+        src="/assets/icon/logo_3.png"
+        style="height: 40px; width : 40px;   "
+      />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-card *ngFor="let item of cart; let i = index">
+      <ion-row>
+        <ion-col size="4">
+          <img [src]="item.imgUrl" />
+        </ion-col>
+        <ion-col size="8">
+          <ion-row>
+            <ion-col size="12" class="no-margin"
+              ><strong
+                >{{item.product_name_th}}</strong
+              ></ion-col
+            >
+            <ion-col size="12" class="no-margin" style="color: red">
+              <h1><strong>{{item.price * item.amt}}</strong></h1>
+            </ion-col>
+            <ion-col>
+              <ion-row>
+                <ion-col size="6">
+                  <b>จำนวนสินค้า: {{item.amt}}</b>
+                </ion-col>
+
+                <ion-col size="2"></ion-col>
+
+                <ion-col size="2">
+                </ion-col>
+                <ion-col size="2">
+                  <img (click)="delete(i)"
+                    src="/assets/pays/delete.png"
+                    style="width: 25px ; height :25px"
+                  />
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-grid style="background-color:white">
+      <ion-row>
+          <ion-col size="8">
+              <ion-col>
+                  <b>รวมทั้งหมด</b> <br> &nbsp;
+                  รวมภาษีมูลค่าเพิ่มแล้ว
+              </ion-col>
+
+          </ion-col>
+          <ion-col size="4" style="text-align: right;">
+              <h3><strong>{{total}} บาท</strong></h3>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <ion-toolbar color="danger" (click)="onClickPayment()">
+      <ion-title style="text-align: center"><strong>ดำเนินการชำระเงิน</strong></ion-title>
+  </ion-toolbar>
+</ion-footer>

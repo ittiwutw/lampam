@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img
+        src="/assets/icon/logo_3.png"
+        style="height: 40px; width : 40px;   "
+      />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <h3><b>กรุณาโอนเงินเข้าบัญชีธนาคาร</b></h3>
+    <br />
+  </ion-item>
+  <ion-grid padding>
+    <ion-row>
+      <ion-col style="text-align: center ;" size="6" *ngFor="let item of banks">
+        <div>
+          <img
+            src="/assets/banks/{{ item.name }}.png"
+            width="25px"
+            height="25px"
+          />
+          <br />
+          <p>ธนาคาร {{item.name}}</p>
+          <p>เลขบัญชี {{item.number}}</p>
+          <p>ชื่อบัญชี</p>
+          <p>บริษัท ลำปำฟาร์ม จำกัด</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- ปุ๋ม ตรวจสอบการสั่งซื้อ -->
+  <div style="margin-left:15px ; margin-right: 15px">
+    <ion-button
+      size="large"
+      type="submit"
+      expand="block"
+      color="danger"
+      (click)="pickImage()"
+      >ส่งหลักฐานยืนยันการโอนเงิน</ion-button
+    >
+  </div>
+  <!-- ปุ๋ม ตรวจสอบการสั่งซื้อ -->
+  <ion-item no-lines *ngIf="paymentSummary">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="7" style="text-align: left;">
+            <div>
+              <div>
+                <strong>รวมทั้งหมด</strong>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col size="5" style="text-align: right; color: red">
+            <div>
+              <div>
+                <b>{{paymentSummary.total}} บาท</b>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  <ion-item no-lines style="background-color: #e7e7e7 ;">
+    <h3><strong>รายละเอียดคำสั่งซื้อ</strong></h3>
+  </ion-item>
+
+  <ion-item>
+    <ion-grid style="background-color: #ffffff ;">
+      <ion-row>
+        <ion-col col-12>
+          <ion-row *ngFor="let item of cart">
+            <ion-col size="4" style="max-height: 100px ; max-width: 100px;"
+              ><img style="margin-top: 20px;" padding [src]="item.imgUrl"
+            /></ion-col>
+            <ion-col size="8" padding>
+              <div >
+                <div style="text-align: left ;">
+                  <h3><b>{{item.product_name_th}}</b></h3>
+                </div>
+                <div style="text-align: left ;">
+                  <strong>{{item.title}}</strong>
+                </div>
+                <div style=" margin-top:0px">
+                  <h2 style="color: red">
+                    <strong> {{item.price}} บาท</strong>
+                  </h2>
+                </div>
+                <div style=" margin-top: 0px">
+                  <p style="color: rgba(136, 132, 128, 0.897)">
+                    จำนวน {{item.amt}} ชิ้น
+                  </p>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-content>

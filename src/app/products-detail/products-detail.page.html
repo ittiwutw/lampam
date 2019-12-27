@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img src="/assets/icon/logo_3.png" style="height: 40px; width : 40px;   "/>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="padding: 5px" *ngIf="productDetail">
+    <h2 style="color: red" text-center>
+      <b>{{productDetail.product_name_th}}</b>
+    </h2>
+    <img padding [src]="productDetail.imgUrl" />
+    <div style="text-align: center ; margin-top: 15px">
+      <h2>
+        <b>สถานะของสินค้า : </b>
+        <b style="color: red">{{productDetail.prodStatus}}</b>
+      </h2>
+    </div>
+    <div style="text-align: center ; margin-top: 15px">
+      <h2><b style="color: red">ราคา {{productDetail.price}} บาท</b></h2>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <ion-row>
+      <ion-col>
+        <ion-card-header icon-start>
+          <b style="color: black">รายละเอียดสินค้า</b>
+        </ion-card-header>
+        <ion-card-content>
+          <div [innerHtml]="productDetail.detail"></div>
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-row style="height: 50px;" >
+    <ion-col
+    size="6"
+      style="background-color: #0d3a8a ; text-align: center ; color: white"
+      (click)="onClickBuy()"
+    >
+      <div>
+        <ion-icon name="pricetag"></ion-icon>
+      </div>
+      <div>
+        ซื้อตอนนี้
+        <br>
+      </div>
+    </ion-col>
+    <ion-col
+      size="6"
+      style="background-color: #ac1600 ; text-align: center ; color: white"
+      (click)="onClickCart()"
+    >
+      <div>
+        <ion-icon name="cart"></ion-icon>
+      </div>
+      <div>
+        หยิบใส่ตระกร้า
+        <br>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-footer>

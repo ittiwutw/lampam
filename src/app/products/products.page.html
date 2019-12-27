@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img
+        src="/assets/icon/logo_3.png"
+        style="height: 30px; width : 30px;  "
+      />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon
+        name="notifications"
+        color="light"
+        style="width: 30px; height: 30px;"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>ประเภทสินค้า</ion-label>
+    <ion-select
+      placeholder="เลือก"
+      [(ngModel)]="productType"
+      (ionChange)="productTypeChange()"
+    >
+      <ion-select-option
+        style="white-space: pre-line;"
+        *ngFor="let cat of cats"
+        [value]="cat.id"
+        >{{ cat.cate_name_th }}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+
+  <div *ngIf="productCats.length == 0">
+    <div style="text-align: center">
+      <h2 style="color: red">กรุณาเลือกประเภทสินค้า</h2>
+    </div>
+  </div>
+
+  <div *ngIf="productCats.length != 0">
+    <div style="text-align: center">
+      <h2 style="color: red">{{ productCats[0].category.cate_name_th }}</h2>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size="6"
+          *ngFor="let item of productCats"
+          style="--background-color: white"
+          (click)="onClickProduct(item,item.productimage[0].file_url)"
+        >
+          <!-- <ion-card style="text-align: center" (click)="onPageFeatureDetail()"> -->
+          <ion-card style="text-align: center">
+            <img [src]="item.productimage[0].file_url" style="height: 150px" />
+            <p style="color: blue;">{{ item.product_name_th }}</p>
+            <strong style="color: red;">{{ item.price }}</strong>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

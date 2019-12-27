@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img
+        src="/assets/icon/logo_3.png"
+        style="height: 40px; width : 40px;   "
+      />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 text-center >สมัครสมาชิก</h1>
+  <ion-list padding>
+
+    <ion-item>
+      <ion-label color="danger" position="floating">ชื่อจริง <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" [(ngModel)]="firstName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="danger" position="floating">นามสกุล <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" [(ngModel)]="lastName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="danger" position="floating">โทรศัพท์มือถือ <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="tel" [(ngModel)]="phone"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="danger" position="floating">อีเมลล์ <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="danger" position="floating">รหัสผ่าน <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <h1 text-center *ngIf="isValidated"> * กรุณากรอกข้อมูลให้ครบถ้วน</h1>
+  </ion-list>
+
+  <div padding>
+      
+      <ion-button size="large" type="submit" expand="block" color="danger" (click)="register()"
+        >ลงทะเบียน</ion-button
+      >
+    </div>
+</ion-content>

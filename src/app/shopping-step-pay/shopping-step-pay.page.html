@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img
+        src="/assets/icon/logo_3.png"
+        style="height: 40px; width : 40px;   "
+      />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="/assets/pays/step-pay2.png" width="100%" alt="" />
+
+  <ion-list>
+    <ion-radio-group [(ngModel)]="selectMethod">
+      <ion-item no-lines style="background-color: #e7e7e7">
+        <strong>เลือกช่องทางการชำระเงิน</strong>
+      </ion-item>
+
+      <ion-item no-lines style="background-color: #f2f2f2">
+        <ion-label
+          ><img src="/assets/pays/bank.png" width="25px" height="25px" />
+          ชำระเงินผ่านบัญชีธนาคาร</ion-label
+        >
+        <!-- <ion-checkbox color="danger" (click)="onClickBank()"></ion-checkbox> -->
+        <ion-radio
+          slot="start"
+          value="bank"
+          (click)="onClickBank()"
+          checked
+        ></ion-radio>
+      </ion-item>
+      <div no-lines padding *ngIf="selectBank">
+        <ion-grid>
+          <ion-row>
+            <ion-col
+              style="text-align: center ;"
+              size="6"
+              *ngFor="let item of banks"
+            >
+              <div>
+                <img
+                  src="/assets/banks/{{ item.name }}.png"
+                  width="25px"
+                  height="25px"
+                />
+                <br />
+                <p>ธนาคาร {{item.name}}</p>
+                <p>{{item.number}}</p>
+                <p>บริษัท ลำปำฟาร์ม จำกัด</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <ion-item no-lines style="background-color: #f2f2f2">
+        <ion-label
+          ><img src="/assets/pays/credit.png" width="25px" height="25px" />
+          ชำระเงินผ่านบัตรเครดิต/เดบิต</ion-label
+        >
+        <!-- <ion-checkbox color="danger"></ion-checkbox> -->
+        <ion-radio
+          (click)="onClickOther()"
+          slot="start"
+          value="visa"
+          checked
+        ></ion-radio>
+      </ion-item>
+
+      <ion-item no-lines style="background-color: #f2f2f2">
+        <ion-label
+          ><ion-icon
+            name="phone-portrait"
+            width="25px"
+            height="25px"
+          ></ion-icon>
+          พนักงานติดต่อกลับ</ion-label
+        >
+        <!-- <ion-checkbox color="danger"></ion-checkbox> -->
+        <ion-radio
+          (click)="onClickOther()"
+          slot="start"
+          value="self"
+          checked
+        ></ion-radio>
+      </ion-item>
+
+      <!-- ปุ๋ม ตรวจสอบการสั่งซื้อ -->
+      <div style="margin-top: 15px;margin-left: 15px;margin-right: 15px;">
+        <ion-button
+          size="large"
+          type="submit"
+          expand="block"
+          color="danger"
+          (click)="onClickCheck()"
+          >ตรวจสอบการสั่งซื้อ</ion-button
+        >
+      </div>
+      <!-- ปุ๋ม ตรวจสอบการสั่งซื้อ -->
+    </ion-radio-group>
+  </ion-list>
+</ion-content>

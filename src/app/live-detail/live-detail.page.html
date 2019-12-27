@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img
+        src="/assets/icon/logo_3.png"
+        style="height: 40px; width : 40px;   "
+      />
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <img
+      src="../../assets/imgs/live.jpg"
+      style="width: 100%; height: 100%"
+      (click)="playLive(url)"
+    />
+  </div>
+  <p style="margin-top: -5px;">{{title}}</p>
+  <br />
+  <div padding>
+    <h1 style="color: #731212;">ช่องอื่นๆ</h1>
+    <div style="background-color: #731212">
+      <ion-slides pager="false" [options]="slideOpts" >
+        <ion-slide background-size *ngFor="let steam of steams">
+          <ion-card>
+            <img
+              src="../../assets/imgs/live.jpg"
+              style="width: 100%; height: 100%"
+              (click)="playLive(steam.url)"
+            />
+            <ion-card-content style="color: #ffff;">{{steam.title}}</ion-card-content>
+          </ion-card>
+        </ion-slide>
+        <br />
+      </ion-slides>
+    </div>
+  </div>
+</ion-content>

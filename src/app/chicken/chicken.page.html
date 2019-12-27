@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img src="/assets/icon/logo_3.png" style="height: 40px; width : 40px;   "/>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="padding: 5px" *ngFor="let item of chickens">
+    <img padding [src]="item.productcockimage[0].file_url" />
+    <h2 text-center>
+      <b>{{item.product_name_th}}</b>
+    </h2>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,180 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img
+        src="/assets/icon/logo_3.png"
+        style="height: 30px; width : 30px;  "
+      />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon
+        name="notifications"
+        color="light"
+        style="width: 30px; height: 30px;"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides
+    pager="true"
+    [options]="slideBandOpts"
+    *ngIf="banners"
+    style="height: 200px; margin-top: -5px;"
+  >
+    <ion-slide background-size *ngFor="let banner of banners">
+      <img
+        [src]="banner.banner_url"
+        style="width: -webkit-fill-available; height: -webkit-fill-available;"
+      />
+    </ion-slide>
+  </ion-slides>
+  <br />
+  <div style="padding-left: 10%; padding-right: 10%;">
+    <p>
+      <b
+        >"ต้นตำรับยาลำปำ <br />
+        เจ้าแรกสำหรับไก่ชเพื่อชัยชนะ"</b
+      >
+    </p>
+    <p>
+      เครื่องหมายการค้า ลำปำ จันทรา "ไก่ชนสองตัวหันหน้าชนกัน"
+      เป็นสัญลักษณ์ที่บ่งบอกถึงความเป็น "ผลิตภัณฑ์ลำปำ" ของแท้ และดั้งเดิม
+      ซึ่งอยู่คู่กับไก่ชนไทยมาอย่างยาวนานมากกว่า 20 ปี จัดจำหน่ายโดย บริษัท
+      ลำปำฟาร์ม จำกัด คงคุณภาพ มาตรฐาน เช่นเดิม
+      และเป็นสัญลักษณ์ที่บ่งบอกถึงความเป็น "ลำปำ"
+    </p>
+    <div text-center>
+      <ion-button
+        shape="round"
+        color="danger"
+        fill="outline"
+        (click)="clickProduct()"
+        >เลือกซื้อผลิตภัณฑ์</ion-button
+      >
+    </div>
+  </div>
+  <!-- <h1 class="ion-text-center">แนะนำรายการ</h1>
+  <br />
+  <div padding-horizontal>
+    <ion-button expand="block" color="danger" [routerLink]="['/news']"
+      >ข่าวสาร</ion-button
+    >
+    <ion-button expand="block" color="danger">
+      กระดานข่าวสารวงการไก่ชน
+    </ion-button>
+    <ion-button expand="block" color="danger" [routerLink]="['/matchs']">
+      โปรแกรมแต่สนาม
+    </ion-button>
+    <ion-button expand="block" color="danger">แนะนำซุ้ม</ion-button>
+    <ion-button expand="block" color="danger" [routerLink]="['/chicken']"
+      >แนะนำไก่ชน</ion-button
+    >
+  </div>
+  <br /> -->
+  <!-- <hr /> -->
+  <div padding-horizontal>
+    <h1>ข่าวสาร</h1>
+    <!-- <ion-button expand="block" color="dark" size="large">ข่าวสาร</ion-button> -->
+  </div>
+
+  <ion-content style="height:550px;">
+    <div scrollY="true" id="myFixZone">
+      <ion-card *ngFor="let item of news" style="height: 100px;" (click)="onClickNews(item)">
+        <ion-row>
+          <ion-col size="6">
+            <img [src]="item.image" />
+          </ion-col>
+          <ion-col size="6">
+            <strong>{{item.title}}</strong>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+  </ion-content>
+  <!-- <ion-slides pager="false" [options]="slideOpts" spaceBetween="2.5">
+    <ion-slide background-size *ngFor="let item of news">
+      <ion-card (click)="onClickNews(item)">
+        <img [src]="item.image" />
+        <ion-card-content>{{item.title}}</ion-card-content>
+      </ion-card>
+    </ion-slidae>
+  </ion-slides> -->
+  <br>
+  <br>
+  <div>
+    <div padding-horizontal>
+      <h1>ถ่ายทอดสด <img style="width: 50px;" src="https://lampam.co/public/images/icon_live.png"></h1>
+      
+    </div>
+    <ion-grid>
+      <ion-slides pager="false" [options]="slideOpts">
+        <ion-slide background-size *ngFor="let steam of steams">
+          <ion-card (click)="onClickSteam(steam.url, steam.title)">
+            <img src="../../assets/imgs/live.jpg" style="border: solid;" />
+            <p>{{steam.title}}</p>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-grid>
+  </div>
+  <!-- <hr /> -->
+  <br>
+  <br>
+  <div padding-horizontal>
+    <h1>ภาพกิจกรรม</h1>
+    <!-- <ion-button expand="block" color="dark" size="large">ภาพกิจกรรม</ion-button> -->
+  </div>
+  <ion-slides pager="false" [options]="slideOpts">
+    <ion-slide background-size *ngFor="let item of galleries">
+      <ion-card>
+        <img [src]="item.cover" />
+        <ion-card-content>{{item.title}}</ion-card-content>
+        <br />
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <br>
+  <br>
+  <hr *ngIf="isEnableChicken" />
+  <div padding-horizontal *ngIf="isEnableChicken">
+    <h1>แนะนำไก่ชน</h1>
+    <!-- <ion-button expand="block" color="dark" size="large">แนะนำไก่ชน</ion-button> -->
+  </div>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide background-size *ngFor="let item of chickens">
+      <ion-card style="padding: 5px">
+        <img padding [src]="item.productcockimage[0].file_url" />
+        <h2 text-center>
+          <b>{{item.product_name_th}}</b>
+        </h2>
+        <br />
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <!-- <hr /> -->
+  <br>
+  <br>
+  <div padding-horizontal>
+    <h1>แนะนำชุดผลิตภัณฑ์</h1>
+    <!-- <ion-button expand="block" color="dark" size="large">แนะนำชุดผลิตภัณฑ์</ion-button> -->
+  </div>
+  <ion-slides [options]="slideProdOpts">
+    <ion-slide background-size *ngFor="let item of productCats; let i = index">
+      <ion-card
+        style="text-align: center"
+        (click)="onClickProduct(item,item.productimage[0].file_url)"
+      >
+        <img [src]="item.productimage[0].file_url" style="height: 250px" />
+        <p style="color: #731212;">{{ item.product_name_th }}</p>
+        <strong style="color: red;">{{ item.price }}</strong>
+      </ion-card>
+      <br />
+    </ion-slide>
+  </ion-slides>
+  <br />
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title text-center>
+      <img
+        src="/assets/icon/logo_3.png"
+        style="height: 30px; width : 30px;  "
+      />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon
+        name="notifications"
+        color="light"
+        style="width: 30px; height: 30px;"
+      ></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <br>
+        <br>
+        <div text-center>
+          <ion-avatar >
+              <img src="../../assets/icon/icon.png" alt="" />
+          </ion-avatar>
+          <h3>เข้าสู่ระบบ</h3>
+        </div>
+        <div padding>
+          <ion-item>
+            <ion-input
+              name="email"
+              type="email"
+              placeholder="your@email.com"
+              [(ngModel)]="email"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              name="password"
+              type="password"
+              placeholder="Password"
+              [(ngModel)]="password"
+              required
+            ></ion-input>
+          </ion-item>
+        </div>
+        <div padding>
+          <ion-button size="large" type="submit" expand="block" color="danger" (click)="login()"
+            >เข้าสู่ระบบ</ion-button
+          >
+          <p text-center style="color: rgb(255, 0, 0)">Email/Password ไม่ถูกต้อง</p>
+          <p text-center (click)="onClickRegister()"><u>สมัครสมาชิก</u></p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
